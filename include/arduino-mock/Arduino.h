@@ -64,6 +64,8 @@ uint8_t shiftIn(uint8_t dataPin, uint8_t clockPin, uint8_t bitOrder);
 void attachInterrupt(uint8_t, void (*)(void), int mode);
 void detachInterrupt(uint8_t);
 
+void attachPinChangeInterrupt(const uint8_t pcintNum, void(*userFunc)(void), const uint8_t mode);
+
 void setup(void);
 void loop(void);
 
@@ -113,6 +115,7 @@ class ArduinoMock {
       addMillisRaw(hours  * 60 * 60 * 1000);
     };
 
+    MOCK_METHOD3(attachPinChangeInterrupt, void (const uint8_t, void(*)(void), const uint8_t));
     MOCK_METHOD2(pinMode, void (uint8_t, uint8_t));
     MOCK_METHOD2(analogWrite, void (uint8_t, int));
     MOCK_METHOD2(digitalWrite, void (uint8_t, uint8_t));
